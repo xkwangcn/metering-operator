@@ -1,0 +1,41 @@
+# vi: ft=yaml
+kind: ImageStream
+metadata:
+  creationTimestamp: null
+  name: metering-s390x-is
+  namespace: metering
+tag: latest
+apiVersion: image.openshift.io/v1
+spec:
+  tags:
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/ose-metering-ansible-operator:4.3-202002261614-s390x
+    name: metering-ansible-operator
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/ose-metering-reporting-operator:4.3-202002261614-s390x
+    name: metering-reporting-operator
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/origin-metering-presto:20200602-s390x
+    name: metering-presto
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/origin-metering-hive:s390x
+    name: metering-hive
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/ose-metering-hadoop:latest
+    name: metering-hadoop
+  - from:
+      kind: DockerImage
+      name: quay.io/bjhuangr/origin-ghostunnel:s390x
+    name: ghostunnel
+  - from:
+      kind: DockerImage
+#      name: quay.io/bjhuangr/origin-oauth-proxy:s390x_4.3
+      name: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:23341e8550cc066abf1651efadd219264cfb6a39eca2bc8e42dd5bde696a3294
+    name: oauth-proxy
+
+

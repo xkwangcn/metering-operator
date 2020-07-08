@@ -25,14 +25,14 @@ spec:
         - /tmp/ansible-operator/runner
         - stdout
         image: "quay.io/openshift/origin-metering-ansible-operator:4.5"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: /tmp/ansible-operator/runner
           name: runner
           readOnly: true
       - name: operator
         image: "quay.io/openshift/origin-metering-ansible-operator:4.5"
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         env:
         - name: OPERATOR_NAME
           value: "metering-ansible-operator"
@@ -59,7 +59,7 @@ spec:
         - name: GHOSTUNNEL_IMAGE
           value: "quay.io/openshift/origin-ghostunnel:4.5"
         - name: OAUTH_PROXY_IMAGE
-          value: "quay.io/openshift/origin-oauth-proxy:4.5"
+          value: "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:23341e8550cc066abf1651efadd219264cfb6a39eca2bc8e42dd5bde696a3294"
         volumeMounts:
         - mountPath: /tmp/ansible-operator/runner
           name: runner

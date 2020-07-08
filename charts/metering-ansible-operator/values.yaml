@@ -12,7 +12,7 @@ operator:
   image:
     repository: quay.io/openshift/origin-metering-ansible-operator
     tag: "4.5"
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
 
   imagePullSecrets: []
 

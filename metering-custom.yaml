@@ -1,0 +1,58 @@
+apiVersion: metering.openshift.io/v1
+kind: MeteringConfig
+metadata:
+  name: "operator-metering"
+spec:
+  storage:
+    type: hive
+    # uncomment one of the hive sections below, picking one of S3, Azure, or
+    # sharedPVC
+    #
+    hive:
+      type: "sharedPVC"
+      sharedPVC:
+        claimName: "metering-nfs"
+
+  hive:
+    spec:
+      image:
+        pullPolicy: IfNotPresent
+        repository: quay.io/bjhuangr/origin-metering-hive
+#        tag: "s390x"
+#        tag: "fix1"
+        tag: "AdoptOpenJDK_release-4.7"
+
+  hadoop:
+    spec:
+      image:
+        pullPolicy: IfNotPresent
+        repository: quay.io/bjhuangr/ose-metering-hadoop
+        tag: "release-4.7"
+
+  reporting-operator:
+    spec:
+      replicas: 1
+      tls:
+        enabled: true
+      image:
+        pullPolicy: IfNotPresent
+        repository: quay.io/bjhuangr/ose-metering-reporting-operator
+      #  tag: "4.3-202002261614-s390x"
+        tag: "release-4.7"
+
+  __ghostunnel:
+    image:
+      pullPolicy: IfNotPresent
+      repository: quay.io/bjhuangr/origin-ghostunnel
+      tag: "release-4.7"
+
+  presto:
+    spec:
+      image:
+        pullPolicy: IfNotPresent
+        repository: quay.io/bjhuangr/origin-metering-presto
+       # tag: s390rpm3
+        tag: AdoptOpenJDK_release-4.7
+
+
+

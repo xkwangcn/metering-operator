@@ -389,8 +389,8 @@ spec:
 {{- end }}
 {{- if $operatorValues.spec.authProxy.enabled }}
       - name: reporting-operator-auth-proxy
-        image: "{{ include "reporting-operator-auth-proxy-image" . }}"
-        imagePullPolicy: {{ $operatorValues.spec.authProxy.image.pullPolicy }}
+        image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:23341e8550cc066abf1651efadd219264cfb6a39eca2bc8e42dd5bde696a3294
+        imagePullPolicy: IfNotPresent        
         env:
         - name: NAMESPACE
           valueFrom:

@@ -2,5 +2,10 @@ apiVersion: metering.openshift.io/v1
 kind: MeteringConfig
 metadata:
   name: operator-metering
-spec: {}
-
+spec:
+  storage:
+  type: "hive"
+  hive:
+    type: "sharedPVC"
+    sharedPVC:
+      claimName: "metering-nfs"
