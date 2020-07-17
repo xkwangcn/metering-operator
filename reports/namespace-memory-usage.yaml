@@ -1,0 +1,9 @@
+apiVersion: metering.openshift.io/v1
+kind: Report
+metadata:
+  name: namespace-memory-usage
+spec:
+  reportingStart: '2020-09-15T00:00:00Z'
+  reportingEnd: '2020-09-15T23:00:00Z'
+  query: "namespace-memory-usage"
+  runImmediately: true

@@ -1,0 +1,9 @@
+apiVersion: metering.openshift.io/v1
+kind: Report
+metadata:
+  name: node-cpu-utilization
+spec:
+  reportingStart: '2020-10-11T00:00:00Z'
+  reportingEnd: '2020-10-11T23:00:00Z'
+  query: "node-cpu-utilization"
+  runImmediately: true

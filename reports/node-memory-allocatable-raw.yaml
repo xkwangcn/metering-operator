@@ -1,0 +1,9 @@
+apiVersion: metering.openshift.io/v1
+kind: Report
+metadata:
+  name: node-memory-allocatable-raw
+spec:
+  reportingStart: '2020-09-10T00:00:00Z'
+  reportingEnd: '2020-09-10T23:00:00Z'
+  query: "node-memory-allocatable-raw"
+  runImmediately: true

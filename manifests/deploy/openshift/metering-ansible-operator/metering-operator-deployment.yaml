@@ -25,15 +25,15 @@ spec:
         - /opt/ansible/scripts/ansible-logs.sh
         - /tmp/ansible-operator/runner
         - stdout
-        image: "quay.io/openshift/origin-metering-ansible-operator:4.6"
-        imagePullPolicy: Always
+        image: "quay.io/bjhuangr/ose-metering-ansible-operator:4.3-202002261614-s390x"
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: /tmp/ansible-operator/runner
           name: runner
           readOnly: true
       - name: operator
-        image: "quay.io/openshift/origin-metering-ansible-operator:4.6"
-        imagePullPolicy: Always
+        image: "quay.io/bjhuangr/ose-metering-ansible-operator:4.3-202002261614-s390x"
+        imagePullPolicy: IfNotPresent
         env:
         - name: OPERATOR_NAME
           value: "metering-operator"
@@ -48,19 +48,19 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         - name: METERING_ANSIBLE_OPERATOR_IMAGE
-          value: "quay.io/openshift/origin-metering-ansible-operator:4.6"
+          value: "quay.io/bjhuangr/ose-metering-ansible-operator:release-4.3-202002261614-s390x"
         - name: METERING_REPORTING_OPERATOR_IMAGE
-          value: "quay.io/openshift/origin-metering-reporting-operator:4.6"
+          value: "quay.io/bjhuangr/ose-metering-reporting-operator:release-4.4"
         - name: METERING_PRESTO_IMAGE
-          value: "quay.io/openshift/origin-metering-presto:4.6"
+          value: "quay.io/bjhuangr/origin-metering-presto:AdoptOpenJDK_release-4.4"
         - name: METERING_HIVE_IMAGE
-          value: "quay.io/openshift/origin-metering-hive:4.6"
+          value: "quay.io/bjhuangr/origin-metering-hive:AdoptOpenJDK_release-4.7"
         - name: METERING_HADOOP_IMAGE
-          value: "quay.io/openshift/origin-metering-hadoop:4.6"
+          value: "quay.io/bjhuangr/origin-metering-hadoop:AdoptOpenJDK_release-4.7"
         - name: GHOSTUNNEL_IMAGE
-          value: "quay.io/openshift/origin-ghostunnel:4.6"
+          value: "quay.io/bjhuangr/origin-ghostunnel:release-4.7"
         - name: OAUTH_PROXY_IMAGE
-          value: "quay.io/openshift/origin-oauth-proxy:4.6"
+          value: "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:1fc04a4730e0bcc451866ae5efbc978a2b5d3b99c2dc66f7720666a986c640f7"
         ports:
         - name: http-metrics
           containerPort: 8383
